@@ -1,0 +1,315 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E5A0197D5ED445A297A3546C = {isa = PBXBuildFile; fileRef = 3E8631249C8E4521A3D21060; };
+		995D7EB84FF645AF892096AC = {isa = PBXBuildFile; fileRef = 517D67816FFC44118423B690; };
+		C0B626BAE2BA4DF980D47648 = {isa = PBXBuildFile; fileRef = E0447650F9C94B80B823338C; };
+		4C0489A02E194E5ABF3259AB = {isa = PBXBuildFile; fileRef = 90172BDC427849769F8A057B; };
+		4048DA491AE84366952451B6 = {isa = PBXBuildFile; fileRef = 3DCD3FD14E0745738E0195BA; };
+		88C3A6DDC9D6418BA34C8EE3 = {isa = PBXBuildFile; fileRef = 0D6F44DF33B34813B234B995; };
+		4EB1BE4107134FFC90E78A7A = {isa = PBXBuildFile; fileRef = E7ABE6CEAEFE479A9DC8621C; };
+		80D10975B1DD4A2C8D9306C2 = {isa = PBXBuildFile; fileRef = 1F8F36E342B34D4084BACB8D; };
+		3D506115F37A4C5F97AB58D7 = {isa = PBXBuildFile; fileRef = B4CE7BF2272F4A30A15F44EF; };
+		0AE3D0E4A298460FA28A8535 = {isa = PBXBuildFile; fileRef = 7F21EEC4EE1944A0AD3B015C; };
+		3118A074EF7B40719667828E = {isa = PBXBuildFile; fileRef = 30F316DA7D4D48FE84BF5593; };
+		13BEA4BFEB49465DBE54B89E = {isa = PBXBuildFile; fileRef = 98E7D01829B34D4DA19FB5EF; };
+		1FE832C021EA4CA5BE5A6161 = {isa = PBXBuildFile; fileRef = D4020380CCCD4C519B5F4A07; };
+		661B420CF6FB49689BF5A5B4 = {isa = PBXBuildFile; fileRef = CC66A6E67A064617B5121C0E; };
+		F91929559BEE49389D67472F = {isa = PBXBuildFile; fileRef = B9A4FE4115924D6C9C9F3BFC; };
+		410D1BECD447492ABC8F1C16 = {isa = PBXBuildFile; fileRef = 6963CE645E0547DBB942BE3F; };
+		A5284A64B0344217BAEC1EE0 = {isa = PBXBuildFile; fileRef = 16DDDE9DC51A488CB54B762B; };
+		06AE552B974C40A3B16C1ACC = {isa = PBXBuildFile; fileRef = 7504577A86A146CA81B8317F; };
+		7A0DFE4EF8684E58A839556B = {isa = PBXBuildFile; fileRef = 34B8E58D51824B6AA7C8C8E5; };
+		F75D99CAF6634B99B637A373 = {isa = PBXBuildFile; fileRef = 849870D3C151419E94FE86B8; };
+		07159F1C275E4A2D8FB2D308 = {isa = PBXBuildFile; fileRef = F3CDC6E2CAFC4386BA7CB743; };
+		B65C28133D234C0D9F3EDD8C = {isa = PBXBuildFile; fileRef = 465259E5105340A58FD5E926; };
+		89B94344DC5445218B05B287 = {isa = PBXBuildFile; fileRef = 5237DB2EEFE7484FB6F371F9; };
+		C902E459C1D84BF99E051B25 = {isa = PBXBuildFile; fileRef = 1462E5F48BE247E6852C8D1C; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3E8631249C8E4521A3D21060 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AirGourmetApp.swift"; path = "AirGourmet/AirGourmetApp.swift"; sourceTree = "<group>"; };
+		517D67816FFC44118423B690 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Colors.swift"; path = "AirGourmet/Design/Colors.swift"; sourceTree = "<group>"; };
+		E0447650F9C94B80B823338C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Spacing.swift"; path = "AirGourmet/Design/Spacing.swift"; sourceTree = "<group>"; };
+		90172BDC427849769F8A057B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Typography.swift"; path = "AirGourmet/Design/Typography.swift"; sourceTree = "<group>"; };
+		3DCD3FD14E0745738E0195BA = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ViewExtensions.swift"; path = "AirGourmet/Utilities/Extensions/ViewExtensions.swift"; sourceTree = "<group>"; };
+		0D6F44DF33B34813B234B995 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notifications.swift"; path = "AirGourmet/Utilities/Helpers/Notifications.swift"; sourceTree = "<group>"; };
+		E7ABE6CEAEFE479A9DC8621C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Models.swift"; path = "AirGourmet/Models/Models.swift"; sourceTree = "<group>"; };
+		1F8F36E342B34D4084BACB8D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CategoryView.swift"; path = "AirGourmet/Views/Menu/CategoryView.swift"; sourceTree = "<group>"; };
+		B4CE7BF2272F4A30A15F44EF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SearchView.swift"; path = "AirGourmet/Views/Menu/SearchView.swift"; sourceTree = "<group>"; };
+		7F21EEC4EE1944A0AD3B015C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ProfileViews.swift"; path = "AirGourmet/Views/Profile/ProfileViews.swift"; sourceTree = "<group>"; };
+		30F316DA7D4D48FE84BF5593 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AuthViews.swift"; path = "AirGourmet/Views/Auth/AuthViews.swift"; sourceTree = "<group>"; };
+		98E7D01829B34D4DA19FB5EF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "OrderViews.swift"; path = "AirGourmet/Views/Order/OrderViews.swift"; sourceTree = "<group>"; };
+		D4020380CCCD4C519B5F4A07 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CartView.swift"; path = "AirGourmet/Views/Cart/CartView.swift"; sourceTree = "<group>"; };
+		CC66A6E67A064617B5121C0E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SharedComponents.swift"; path = "AirGourmet/Views/Components/SharedComponents.swift"; sourceTree = "<group>"; };
+		B9A4FE4115924D6C9C9F3BFC = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContentView.swift"; path = "AirGourmet/Views/Home/ContentView.swift"; sourceTree = "<group>"; };
+		6963CE645E0547DBB942BE3F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HomeView.swift"; path = "AirGourmet/Views/Home/HomeView.swift"; sourceTree = "<group>"; };
+		16DDDE9DC51A488CB54B762B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InfoViews.swift"; path = "AirGourmet/Views/Info/InfoViews.swift"; sourceTree = "<group>"; };
+		7504577A86A146CA81B8317F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AuthStore.swift"; path = "AirGourmet/State/AuthStore.swift"; sourceTree = "<group>"; };
+		34B8E58D51824B6AA7C8C8E5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CartStore.swift"; path = "AirGourmet/State/CartStore.swift"; sourceTree = "<group>"; };
+		849870D3C151419E94FE86B8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MenuStore.swift"; path = "AirGourmet/State/MenuStore.swift"; sourceTree = "<group>"; };
+		F3CDC6E2CAFC4386BA7CB743 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "OrderStore.swift"; path = "AirGourmet/State/OrderStore.swift"; sourceTree = "<group>"; };
+		465259E5105340A58FD5E926 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIClient.swift"; path = "AirGourmet/Services/APIClient.swift"; sourceTree = "<group>"; };
+		5237DB2EEFE7484FB6F371F9 = {isa = PBXFileReference; lastKnownFileType = text.json; name = "menu.json"; path = "AirGourmet/Resources/menu.json"; sourceTree = "<group>"; };
+		1462E5F48BE247E6852C8D1C = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "AirGourmet/Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		AG000000000000000000AA14 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirGourmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AG000000000000000000AA11 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ( );
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+
+		AG000000000000000000AA12 = {
+			isa = PBXGroup;
+			children = (
+					AG000000000000000000AA13,
+					AG000000000000000000AA15,
+			);
+			sourceTree = "<group>";
+		};
+		AG000000000000000000AA13 = {
+			isa = PBXGroup;
+			children = (
+					AG000000000000000000AA14,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AG000000000000000000AA15 = {
+			isa = PBXGroup;
+			children = (
+					3E8631249C8E4521A3D21060,
+					517D67816FFC44118423B690,
+					E0447650F9C94B80B823338C,
+					90172BDC427849769F8A057B,
+					3DCD3FD14E0745738E0195BA,
+					0D6F44DF33B34813B234B995,
+					E7ABE6CEAEFE479A9DC8621C,
+					1F8F36E342B34D4084BACB8D,
+					B4CE7BF2272F4A30A15F44EF,
+					7F21EEC4EE1944A0AD3B015C,
+					30F316DA7D4D48FE84BF5593,
+					98E7D01829B34D4DA19FB5EF,
+					D4020380CCCD4C519B5F4A07,
+					CC66A6E67A064617B5121C0E,
+					B9A4FE4115924D6C9C9F3BFC,
+					6963CE645E0547DBB942BE3F,
+					16DDDE9DC51A488CB54B762B,
+					7504577A86A146CA81B8317F,
+					34B8E58D51824B6AA7C8C8E5,
+					849870D3C151419E94FE86B8,
+					F3CDC6E2CAFC4386BA7CB743,
+					465259E5105340A58FD5E926,
+					5237DB2EEFE7484FB6F371F9,
+					1462E5F48BE247E6852C8D1C,
+			);
+			name = AirGourmet;
+			path = AirGourmet;
+			sourceTree = "<group>";
+		};
+
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AG000000000000000000AA02 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AG000000000000000000AA04;
+			buildPhases = (
+				AG000000000000000000AA09,
+				AG000000000000000000AA10,
+				AG000000000000000000AA11,
+			);
+			buildRules = ( );
+			dependencies = ( );
+			name = AirGourmet;
+			productName = AirGourmet;
+			productReference = AG000000000000000000AA14;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AG000000000000000000AA01 = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AG000000000000000000AA02 = { CreatedOnToolsVersion = 15.0; };
+				};
+			};
+			buildConfigurationList = AG000000000000000000AA03;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = ( en, Base, );
+			mainGroup = AG000000000000000000AA12;
+			productsGroup = AG000000000000000000AA13;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = ( AG000000000000000000AA02, );
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AG000000000000000000AA10 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+					89B94344DC5445218B05B287 /* menu.json in Resources */,
+					C902E459C1D84BF99E051B25 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AG000000000000000000AA09 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+					E5A0197D5ED445A297A3546C /* AirGourmetApp.swift in Sources */,
+					995D7EB84FF645AF892096AC /* Colors.swift in Sources */,
+					C0B626BAE2BA4DF980D47648 /* Spacing.swift in Sources */,
+					4C0489A02E194E5ABF3259AB /* Typography.swift in Sources */,
+					4048DA491AE84366952451B6 /* ViewExtensions.swift in Sources */,
+					88C3A6DDC9D6418BA34C8EE3 /* Notifications.swift in Sources */,
+					4EB1BE4107134FFC90E78A7A /* Models.swift in Sources */,
+					80D10975B1DD4A2C8D9306C2 /* CategoryView.swift in Sources */,
+					3D506115F37A4C5F97AB58D7 /* SearchView.swift in Sources */,
+					0AE3D0E4A298460FA28A8535 /* ProfileViews.swift in Sources */,
+					3118A074EF7B40719667828E /* AuthViews.swift in Sources */,
+					13BEA4BFEB49465DBE54B89E /* OrderViews.swift in Sources */,
+					1FE832C021EA4CA5BE5A6161 /* CartView.swift in Sources */,
+					661B420CF6FB49689BF5A5B4 /* SharedComponents.swift in Sources */,
+					F91929559BEE49389D67472F /* ContentView.swift in Sources */,
+					410D1BECD447492ABC8F1C16 /* HomeView.swift in Sources */,
+					A5284A64B0344217BAEC1EE0 /* InfoViews.swift in Sources */,
+					06AE552B974C40A3B16C1ACC /* AuthStore.swift in Sources */,
+					7A0DFE4EF8684E58A839556B /* CartStore.swift in Sources */,
+					F75D99CAF6634B99B637A373 /* MenuStore.swift in Sources */,
+					07159F1C275E4A2D8FB2D308 /* OrderStore.swift in Sources */,
+					B65C28133D234C0D9F3EDD8C /* APIClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AG000000000000000000AA05 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ( "DEBUG=1", "$(inherited)", );
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AG000000000000000000AA06 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AG000000000000000000AA07 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airgourmet.mobilemenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AG000000000000000000AA08 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.airgourmet.mobilemenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AG000000000000000000AA03 = {
+			isa = XCConfigurationList;
+			buildConfigurations = ( AG000000000000000000AA05, AG000000000000000000AA06, );
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AG000000000000000000AA04 = {
+			isa = XCConfigurationList;
+			buildConfigurations = ( AG000000000000000000AA07, AG000000000000000000AA08, );
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AG000000000000000000AA01;
+}

@@ -1,0 +1,225 @@
+[
+  {
+    "id": 1,
+    "name": "Continental Breakfast Basket",
+    "description": "Fresh-baked croissants, assorted pastries, seasonal fruit, yogurt, and preserves. Served with orange juice and coffee.",
+    "category": "Breakfast",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": []
+  },
+  {
+    "id": 2,
+    "name": "Smoked Salmon Platter",
+    "description": "Scottish smoked salmon with cream cheese, capers, red onion, and artisan crackers.",
+    "category": "Breakfast",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 3,
+    "name": "Avocado Toast",
+    "description": "Toasted sourdough with smashed avocado, cherry tomatoes, microgreens, and everything bagel seasoning.",
+    "category": "Breakfast",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 4,
+    "name": "Seasonal Fruit Display",
+    "description": "An abundant display of the finest seasonal fruits, elegantly arranged for sharing.",
+    "category": "Display Trays",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": []
+  },
+  {
+    "id": 5,
+    "name": "Charcuterie & Cheese Board",
+    "description": "Artisan cured meats, aged cheeses, house-made accompaniments, nuts, and artisan crackers.",
+    "category": "Display Trays",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 6,
+    "name": "Sushi Display",
+    "description": "An assortment of nigiri, maki, and sashimi, prepared fresh and elegantly presented.",
+    "category": "Display Trays",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 7,
+    "name": "Shrimp Cocktail",
+    "description": "Chilled jumbo shrimp with house-made cocktail sauce and lemon.",
+    "category": "Appetizers",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": []
+  },
+  {
+    "id": 8,
+    "name": "Bruschetta al Pomodoro",
+    "description": "Toasted ciabatta topped with vine-ripened tomatoes, fresh basil, and extra virgin olive oil.",
+    "category": "Appetizers",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 9,
+    "name": "Beef Carpaccio",
+    "description": "Thinly sliced prime beef with arugula, shaved Parmesan, capers, and truffle oil.",
+    "category": "Appetizers",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 10,
+    "name": "Lobster Bisque",
+    "description": "Rich and creamy bisque made from fresh lobster, finished with a touch of sherry and crème fraîche.",
+    "category": "Soups",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": []
+  },
+  {
+    "id": 11,
+    "name": "French Onion Soup",
+    "description": "Classic French onion soup with caramelized onions, rich beef broth, topped with gruyère crouton.",
+    "category": "Soups",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 12,
+    "name": "Caesar Salad",
+    "description": "Crisp romaine hearts with house-made Caesar dressing, Parmesan reggiano, and artisan croutons.",
+    "category": "Salads",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": [
+      { "name": "Add Chicken", "priceAdjustment": 0 },
+      { "name": "Add Shrimp", "priceAdjustment": 0 }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Nicoise Salad",
+    "description": "Traditional French salad with seared tuna, haricots verts, olives, egg, and anchovy vinaigrette.",
+    "category": "Salads",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 14,
+    "name": "Caprese Salad",
+    "description": "Fresh buffalo mozzarella, heirloom tomatoes, basil, aged balsamic, and extra virgin olive oil.",
+    "category": "Salads",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 15,
+    "name": "Club Sandwich",
+    "description": "Triple-decker with roasted turkey, crispy bacon, avocado, lettuce, tomato, and aioli on toasted brioche.",
+    "category": "Sandwiches",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": []
+  },
+  {
+    "id": 16,
+    "name": "Lobster Roll",
+    "description": "Cold Maine lobster salad with light mayo, tarragon, and chives in a toasted New England roll.",
+    "category": "Sandwiches",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 17,
+    "name": "Wagyu Beef Tenderloin",
+    "description": "6oz wagyu tenderloin, roasted fingerling potatoes, seasonal vegetables, and red wine reduction.",
+    "category": "Entrées",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": [
+      { "name": "Rare", "priceAdjustment": 0 },
+      { "name": "Medium Rare", "priceAdjustment": 0 },
+      { "name": "Medium", "priceAdjustment": 0 }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Pan-Seared Halibut",
+    "description": "Pacific halibut with lemon beurre blanc, capers, roasted asparagus, and saffron risotto.",
+    "category": "Entrées",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 19,
+    "name": "Roasted Chicken Breast",
+    "description": "Free-range chicken breast with herb jus, truffle mashed potatoes, and haricots verts.",
+    "category": "Entrées",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 20,
+    "name": "Pasta Primavera",
+    "description": "House-made fettuccine with seasonal vegetables, light cream sauce, and shaved Parmesan.",
+    "category": "Entrées",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 21,
+    "name": "Chocolate Lava Cake",
+    "description": "Warm dark chocolate cake with a molten center, served with vanilla bean ice cream and berry coulis.",
+    "category": "Desserts",
+    "imageUrl": null,
+    "featured": true,
+    "customizationOptions": []
+  },
+  {
+    "id": 22,
+    "name": "Crème Brûlée",
+    "description": "Classic French custard with caramelized sugar crust, fresh berries, and whipped cream.",
+    "category": "Desserts",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 23,
+    "name": "Fresh Berry Tart",
+    "description": "Buttery pastry shell with vanilla cream, seasonal fresh berries, and apricot glaze.",
+    "category": "Desserts",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  },
+  {
+    "id": 24,
+    "name": "Cheese Selection",
+    "description": "Curated selection of international cheeses with honeycomb, candied walnuts, and artisan crackers.",
+    "category": "Desserts",
+    "imageUrl": null,
+    "featured": false,
+    "customizationOptions": []
+  }
+]
