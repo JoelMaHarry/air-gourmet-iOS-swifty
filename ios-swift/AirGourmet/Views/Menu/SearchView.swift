@@ -56,7 +56,7 @@ struct SearchView: View {
                 Spacer()
             } else if results.isEmpty {
                 Spacer()
-                Text("No results for "\(searchText)"")
+                Text("No results for \"\(searchText)\"")
                     .font(.agBody)
                     .foregroundColor(.agMediumGrey)
                 Spacer()
