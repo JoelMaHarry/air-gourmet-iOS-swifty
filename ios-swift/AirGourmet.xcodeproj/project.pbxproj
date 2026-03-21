@@ -34,30 +34,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E8631249C8E4521A3D21060 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AirGourmetApp.swift"; path = "AirGourmet/AirGourmetApp.swift"; sourceTree = "<group>"; };
-		517D67816FFC44118423B690 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Colors.swift"; path = "AirGourmet/Design/Colors.swift"; sourceTree = "<group>"; };
-		E0447650F9C94B80B823338C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Spacing.swift"; path = "AirGourmet/Design/Spacing.swift"; sourceTree = "<group>"; };
-		90172BDC427849769F8A057B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Typography.swift"; path = "AirGourmet/Design/Typography.swift"; sourceTree = "<group>"; };
-		3DCD3FD14E0745738E0195BA = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ViewExtensions.swift"; path = "AirGourmet/Utilities/Extensions/ViewExtensions.swift"; sourceTree = "<group>"; };
-		0D6F44DF33B34813B234B995 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notifications.swift"; path = "AirGourmet/Utilities/Helpers/Notifications.swift"; sourceTree = "<group>"; };
-		E7ABE6CEAEFE479A9DC8621C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Models.swift"; path = "AirGourmet/Models/Models.swift"; sourceTree = "<group>"; };
-		1F8F36E342B34D4084BACB8D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CategoryView.swift"; path = "AirGourmet/Views/Menu/CategoryView.swift"; sourceTree = "<group>"; };
-		B4CE7BF2272F4A30A15F44EF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SearchView.swift"; path = "AirGourmet/Views/Menu/SearchView.swift"; sourceTree = "<group>"; };
-		7F21EEC4EE1944A0AD3B015C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ProfileViews.swift"; path = "AirGourmet/Views/Profile/ProfileViews.swift"; sourceTree = "<group>"; };
-		30F316DA7D4D48FE84BF5593 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AuthViews.swift"; path = "AirGourmet/Views/Auth/AuthViews.swift"; sourceTree = "<group>"; };
-		98E7D01829B34D4DA19FB5EF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "OrderViews.swift"; path = "AirGourmet/Views/Order/OrderViews.swift"; sourceTree = "<group>"; };
-		D4020380CCCD4C519B5F4A07 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CartView.swift"; path = "AirGourmet/Views/Cart/CartView.swift"; sourceTree = "<group>"; };
-		CC66A6E67A064617B5121C0E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SharedComponents.swift"; path = "AirGourmet/Views/Components/SharedComponents.swift"; sourceTree = "<group>"; };
-		B9A4FE4115924D6C9C9F3BFC = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContentView.swift"; path = "AirGourmet/Views/Home/ContentView.swift"; sourceTree = "<group>"; };
-		6963CE645E0547DBB942BE3F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HomeView.swift"; path = "AirGourmet/Views/Home/HomeView.swift"; sourceTree = "<group>"; };
-		16DDDE9DC51A488CB54B762B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InfoViews.swift"; path = "AirGourmet/Views/Info/InfoViews.swift"; sourceTree = "<group>"; };
-		7504577A86A146CA81B8317F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AuthStore.swift"; path = "AirGourmet/State/AuthStore.swift"; sourceTree = "<group>"; };
-		34B8E58D51824B6AA7C8C8E5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CartStore.swift"; path = "AirGourmet/State/CartStore.swift"; sourceTree = "<group>"; };
-		849870D3C151419E94FE86B8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MenuStore.swift"; path = "AirGourmet/State/MenuStore.swift"; sourceTree = "<group>"; };
-		F3CDC6E2CAFC4386BA7CB743 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "OrderStore.swift"; path = "AirGourmet/State/OrderStore.swift"; sourceTree = "<group>"; };
-		465259E5105340A58FD5E926 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIClient.swift"; path = "AirGourmet/Services/APIClient.swift"; sourceTree = "<group>"; };
-		5237DB2EEFE7484FB6F371F9 = {isa = PBXFileReference; lastKnownFileType = text.json; name = "menu.json"; path = "AirGourmet/Resources/menu.json"; sourceTree = "<group>"; };
-		1462E5F48BE247E6852C8D1C = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "AirGourmet/Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		3E8631249C8E4521A3D21060 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AirGourmetApp.swift"; path = "AirGourmetApp.swift"; sourceTree = "<group>"; };
+		517D67816FFC44118423B690 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Colors.swift"; path = "Design/Colors.swift"; sourceTree = "<group>"; };
+		E0447650F9C94B80B823338C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Spacing.swift"; path = "Design/Spacing.swift"; sourceTree = "<group>"; };
+		90172BDC427849769F8A057B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Typography.swift"; path = "Design/Typography.swift"; sourceTree = "<group>"; };
+		3DCD3FD14E0745738E0195BA = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ViewExtensions.swift"; path = "Utilities/Extensions/ViewExtensions.swift"; sourceTree = "<group>"; };
+		0D6F44DF33B34813B234B995 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notifications.swift"; path = "Utilities/Helpers/Notifications.swift"; sourceTree = "<group>"; };
+		E7ABE6CEAEFE479A9DC8621C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Models.swift"; path = "Models/Models.swift"; sourceTree = "<group>"; };
+		1F8F36E342B34D4084BACB8D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CategoryView.swift"; path = "Views/Menu/CategoryView.swift"; sourceTree = "<group>"; };
+		B4CE7BF2272F4A30A15F44EF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SearchView.swift"; path = "Views/Menu/SearchView.swift"; sourceTree = "<group>"; };
+		7F21EEC4EE1944A0AD3B015C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ProfileViews.swift"; path = "Views/Profile/ProfileViews.swift"; sourceTree = "<group>"; };
+		30F316DA7D4D48FE84BF5593 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AuthViews.swift"; path = "Views/Auth/AuthViews.swift"; sourceTree = "<group>"; };
+		98E7D01829B34D4DA19FB5EF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "OrderViews.swift"; path = "Views/Order/OrderViews.swift"; sourceTree = "<group>"; };
+		D4020380CCCD4C519B5F4A07 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CartView.swift"; path = "Views/Cart/CartView.swift"; sourceTree = "<group>"; };
+		CC66A6E67A064617B5121C0E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SharedComponents.swift"; path = "Views/Components/SharedComponents.swift"; sourceTree = "<group>"; };
+		B9A4FE4115924D6C9C9F3BFC = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ContentView.swift"; path = "Views/Home/ContentView.swift"; sourceTree = "<group>"; };
+		6963CE645E0547DBB942BE3F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HomeView.swift"; path = "Views/Home/HomeView.swift"; sourceTree = "<group>"; };
+		16DDDE9DC51A488CB54B762B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InfoViews.swift"; path = "Views/Info/InfoViews.swift"; sourceTree = "<group>"; };
+		7504577A86A146CA81B8317F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AuthStore.swift"; path = "State/AuthStore.swift"; sourceTree = "<group>"; };
+		34B8E58D51824B6AA7C8C8E5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CartStore.swift"; path = "State/CartStore.swift"; sourceTree = "<group>"; };
+		849870D3C151419E94FE86B8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MenuStore.swift"; path = "State/MenuStore.swift"; sourceTree = "<group>"; };
+		F3CDC6E2CAFC4386BA7CB743 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "OrderStore.swift"; path = "State/OrderStore.swift"; sourceTree = "<group>"; };
+		465259E5105340A58FD5E926 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APIClient.swift"; path = "Services/APIClient.swift"; sourceTree = "<group>"; };
+		5237DB2EEFE7484FB6F371F9 = {isa = PBXFileReference; lastKnownFileType = text.json; name = "menu.json"; path = "Resources/menu.json"; sourceTree = "<group>"; };
+		1462E5F48BE247E6852C8D1C = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Resources/Assets.xcassets"; sourceTree = "<group>"; };
 		AG000000000000000000AA14 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirGourmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
