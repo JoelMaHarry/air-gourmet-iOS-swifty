@@ -44,26 +44,15 @@ struct HomeView: View {
 
     // ─────────────────────────────────────────
     // MARK: 1. HOME HEADER (black)
-    // hamburger left · AG logo center · profile right
+    // Figma: Hero Header Background y=-49 h=240
+    // Logo at y=28, title at y=141
+    // Fruit image at y=208 — below this header
     // ─────────────────────────────────────────
     private var homeHeader: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.black
 
-            // Logo + title stacked center
-            VStack(spacing: 6) {
-                Image("ag-symbol-white")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 72, height: 72)
-                Text("AIR GOURMET INFLIGHT CATERING")
-                    .font(.outfitLight(14))
-                    .foregroundColor(.white)
-                    .kerning(0.9)
-                    .multilineTextAlignment(.center)
-            }
-
-            // Hamburger left
+            // Hamburger + profile row at top
             HStack {
                 Button(action: { withAnimation { isSideNavOpen = true } }) {
                     Image(systemName: "line.horizontal.3")
@@ -72,8 +61,8 @@ struct HomeView: View {
                         .frame(width: 44, height: 44)
                 }
                 .padding(.leading, 8)
+                .padding(.top, 8)
                 Spacer()
-                // Profile icon right
                 Button(action: {}) {
                     Image(systemName: "person")
                         .font(.system(size: 20))
@@ -81,23 +70,44 @@ struct HomeView: View {
                         .frame(width: 44, height: 44)
                 }
                 .padding(.trailing, 8)
+                .padding(.top, 8)
+            }
+
+            // Logo + title centered in the black zone
+            VStack(spacing: 8) {
+                Spacer().frame(height: 28)
+                Image("ag-symbol-white")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 90, height: 88)
+                Text("AIR GOURMET INFLIGHT CATERING")
+                    .font(.outfitLight(16))
+                    .foregroundColor(.white)
+                    .kerning(0.9)
+                    .multilineTextAlignment(.center)
             }
         }
-        .frame(height: 130)
+        .frame(height: 191)
     }
 
     // ─────────────────────────────────────────
-    // MARK: 2. HERO IMAGE (white bg, fruit dish)
+    // Figma: FearturedDishes at y=208, h=179
+    // sits BELOW the black header on white bg
+    // ─────────────────────────────────────────
+
+    // ─────────────────────────────────────────
+    // MARK: 2. HERO IMAGE
+    // Figma: x=383, y=208, w=319, h=179
+    // Floating on white, no border/box
     // ─────────────────────────────────────────
     private var heroImageSection: some View {
         Image("featured-dishes")
             .resizable()
             .scaledToFit()
+            .frame(width: 319)
             .frame(maxWidth: .infinity)
-            .padding(.horizontal, 40)
-            .padding(.top, 20)
-            .padding(.bottom, 8)
-            .background(Color.white)
+            .padding(.top, 16)
+            .padding(.bottom, 4)
     }
 
     // ─────────────────────────────────────────
