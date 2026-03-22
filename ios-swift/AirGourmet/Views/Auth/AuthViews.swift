@@ -1,5 +1,7 @@
 import SwiftUI
 
+// MARK: - Auth Container
+
 struct AuthView: View {
     @State private var mode: AuthMode = .signIn
     @Environment(\.presentationMode) var presentationMode
@@ -8,12 +10,13 @@ struct AuthView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Header
+            // Close button
             HStack {
                 Spacer()
                 Button(action: { presentationMode.wrappedValue.dismiss() }) {
                     Image(systemName: "xmark")
                         .foregroundColor(.agBlack)
+                        .font(.system(size: 18))
                         .frame(width: 44, height: 44)
                 }
             }
@@ -39,73 +42,182 @@ struct AuthView: View {
     }
 }
 
+// MARK: - Auth Header (shared logo + title)
+
+private struct AuthHeader: View {
+    var body: some View {
+        VStack(spacing: 12) {
+            Image("ag-logo-black")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 160, height: 160)
+
+            Text("AIR GOURMET")
+                .font(.outfitLight(28))
+                .foregroundColor(.agBlack)
+                .kerning(1.5)
+
+            Text("THE FINEST DINING IN THE AIR")
+                .font(.outfitLight(13))
+                .foregroundColor(.agDarkGrey)
+                .kerning(1.5)
+        }
+        .padding(.top, AGSpacing.lg)
+        .padding(.bottom, AGSpacing.xl)
+    }
+}
+
+// MARK: - Sign In / Register Toggle
+
+private struct AuthToggle: View {
+    @Binding var mode: AuthView.AuthMode
+    var onSignIn: () -> Void
+    var onRegister: () -> Void
+
+    var body: some View {
+        HStack(spacing: 0) {
+            Button(action: onSignIn) {
+                Text("SIGN IN")
+                    .font(.outfitLight(14))
+                    .kerning(1)
+                    .foregroundColor(mode == .signIn ? .agWhite : .agDarkGrey)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .background(mode == .signIn ? Color(red: 0.4, green: 0.4, blue: 0.4) : Color(red: 0.93, green: 0.93, blue: 0.93))
+                    .cornerRadius(8, corners: [.topLeft, .bottomLeft])
+            }
+            Button(action: onRegister) {
+                Text("REGISTER")
+                    .font(.outfitLight(14))
+                    .kerning(1)
+                    .foregroundColor(mode == .signUp ? .agWhite : .agDarkGrey)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .background(mode == .signUp ? Color(red: 0.4, green: 0.4, blue: 0.4) : Color(red: 0.93, green: 0.93, blue: 0.93))
+                    .cornerRadius(8, corners: [.topRight, .bottomRight])
+            }
+        }
+        .padding(.horizontal, AGSpacing.lg)
+        .padding(.bottom, AGSpacing.lg)
+    }
+}
+
 // MARK: - Sign In
 
 struct SignInView: View {
     @EnvironmentObject var authStore: AuthStore
     @State private var username = ""
     @State private var password = ""
+    @State private var rememberMe = false
+    @State private var authMode: AuthView.AuthMode = .signIn
     var onForgotPassword: () -> Void
     var onSignUp: () -> Void
     var onSuccess: () -> Void
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: AGSpacing.xl) {
-                Text("SIGN IN")
-                    .font(.agSectionTitle)
-                    .foregroundColor(.agBlack)
-                    .kerning(1.5)
-                    .padding(.top, AGSpacing.xl)
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 0) {
+                AuthHeader()
 
-                VStack(spacing: AGSpacing.md) {
-                    AGTextField(placeholder: "Username", text: $username)
-                    AGTextField(placeholder: "Password", text: $password, isSecure: true)
-                }
-                .padding(.horizontal, AGSpacing.lg)
+                AuthToggle(mode: $authMode, onSignIn: {}, onRegister: onSignUp)
 
-                if let error = authStore.errorMessage {
-                    Text(error)
-                        .font(.agMenuItemDescription)
-                        .foregroundColor(.red)
-                        .padding(.horizontal, AGSpacing.lg)
-                }
+                VStack(alignment: .leading, spacing: AGSpacing.md) {
 
-                Button(action: {
-                    Task {
-                        await authStore.login(username: username, password: password)
-                        if authStore.isLoggedIn { onSuccess() }
+                    // Username
+                    fieldLabel("USERNAME")
+                    AGTextField(placeholder: "Enter your username", text: $username)
+
+                    // Password
+                    fieldLabel("PASSWORD")
+                    AGTextField(placeholder: "••••••••", text: $password, isSecure: true)
+
+                    // Remember me
+                    HStack(spacing: AGSpacing.xs) {
+                        Button(action: { rememberMe.toggle() }) {
+                            RoundedRectangle(cornerRadius: 3)
+                                .stroke(Color.agMediumGrey, lineWidth: 1)
+                                .frame(width: 20, height: 20)
+                                .overlay(
+                                    rememberMe ? Image(systemName: "checkmark")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundColor(.agBlack) : nil
+                                )
+                        }
+                        Text("REMEMBER ME")
+                            .font(.outfitLight(12))
+                            .foregroundColor(.agDarkGrey)
+                            .kerning(1)
                     }
-                }) {
-                    if authStore.isLoading {
-                        ProgressView().tint(.agWhite).agPrimaryButton()
-                    } else {
-                        Text("SIGN IN").agPrimaryButton()
-                    }
-                }
-                .padding(.horizontal, AGSpacing.lg)
+                    .padding(.top, AGSpacing.xs)
 
-                Button(action: onForgotPassword) {
-                    Text("Forgot Password?")
-                        .font(.agMenuItemDescription)
-                        .foregroundColor(.agCoral)
-                        .underline()
-                }
-
-                HStack {
-                    Text("Don't have an account?")
-                        .font(.agMenuItemDescription)
-                        .foregroundColor(.agDarkGrey)
-                    Button(action: onSignUp) {
-                        Text("Sign Up")
+                    if let error = authStore.errorMessage {
+                        Text(error)
                             .font(.agMenuItemDescription)
-                            .foregroundColor(.agCoral)
-                            .underline()
+                            .foregroundColor(.red)
                     }
+
+                    // Sign In button
+                    Button(action: {
+                        Task {
+                            await authStore.login(username: username, password: password)
+                            if authStore.isLoggedIn { onSuccess() }
+                        }
+                    }) {
+                        Group {
+                            if authStore.isLoading {
+                                ProgressView().tint(.agWhite)
+                            } else {
+                                Text("SIGN IN")
+                            }
+                        }
+                        .font(.outfitLight(14))
+                        .foregroundColor(.agWhite)
+                        .kerning(1)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color.agCoral)
+                        .cornerRadius(8)
+                    }
+                    .padding(.top, AGSpacing.md)
+
+                    // Forgot password
+                    Button(action: onForgotPassword) {
+                        Text("FORGOT PASSWORD")
+                            .font(.outfitLight(14))
+                            .foregroundColor(.agDarkGrey)
+                            .kerning(1)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
+                            .background(Color(red: 0.93, green: 0.93, blue: 0.93))
+                            .cornerRadius(8)
+                    }
+
+                    // Trouble logging in
+                    HStack(spacing: 4) {
+                        Text("Trouble logging in?")
+                            .font(.hanumanMedium(14))
+                            .foregroundColor(.agDarkGrey)
+                        Button(action: {}) {
+                            Text("Contact us.")
+                                .font(.hanumanMedium(14))
+                                .foregroundColor(.agDarkGrey)
+                                .underline()
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, AGSpacing.lg)
+                    .padding(.bottom, AGSpacing.xxxl)
                 }
-                .padding(.bottom, AGSpacing.xxxl)
+                .padding(.horizontal, AGSpacing.lg)
             }
         }
+    }
+
+    private func fieldLabel(_ text: String) -> some View {
+        Text(text)
+            .font(.outfitLight(12))
+            .foregroundColor(.agDarkGrey)
+            .kerning(1)
     }
 }
 
@@ -113,75 +225,107 @@ struct SignInView: View {
 
 struct SignUpView: View {
     @EnvironmentObject var authStore: AuthStore
-    @State private var fullName = ""
-    @State private var email = ""
     @State private var username = ""
     @State private var password = ""
+    @State private var confirmPassword = ""
+    @State private var fullName = ""
     @State private var companyName = ""
+    @State private var email = ""
     @State private var phone = ""
+    @State private var authMode: AuthView.AuthMode = .signUp
     var onSignIn: () -> Void
     var onSuccess: () -> Void
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: AGSpacing.xl) {
-                Text("CREATE ACCOUNT")
-                    .font(.agSectionTitle)
-                    .foregroundColor(.agBlack)
-                    .kerning(1.5)
-                    .padding(.top, AGSpacing.xl)
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 0) {
+                AuthHeader()
 
-                VStack(spacing: AGSpacing.md) {
-                    AGTextField(placeholder: "Full Name", text: $fullName)
-                    AGTextField(placeholder: "Email", text: $email)
-                    AGTextField(placeholder: "Username", text: $username)
-                    AGTextField(placeholder: "Password", text: $password, isSecure: true)
-                    AGTextField(placeholder: "Company Name (optional)", text: $companyName)
-                    AGTextField(placeholder: "Phone (optional)", text: $phone)
-                }
-                .padding(.horizontal, AGSpacing.lg)
+                AuthToggle(mode: $authMode, onSignIn: onSignIn, onRegister: {})
 
-                if let error = authStore.errorMessage {
-                    Text(error)
-                        .font(.agMenuItemDescription)
-                        .foregroundColor(.red)
-                        .padding(.horizontal, AGSpacing.lg)
-                }
+                VStack(alignment: .leading, spacing: AGSpacing.md) {
 
-                Button(action: {
-                    Task {
-                        let request = RegisterRequest(
-                            username: username,
-                            password: password,
-                            fullName: fullName,
-                            email: email,
-                            phoneNumber: phone.isEmpty ? nil : phone,
-                            companyName: companyName.isEmpty ? nil : companyName
-                        )
-                        await authStore.register(request: request)
-                        if authStore.isLoggedIn { onSuccess() }
+                    fieldLabel("USERNAME *")
+                    AGTextField(placeholder: "Enter your username", text: $username)
+
+                    // Password row (side by side)
+                    HStack(spacing: AGSpacing.md) {
+                        VStack(alignment: .leading, spacing: 6) {
+                            fieldLabel("PASSWORD")
+                            AGTextField(placeholder: "", text: $password, isSecure: true)
+                        }
+                        VStack(alignment: .leading, spacing: 6) {
+                            fieldLabel("CONFIRM PASSWORD")
+                            AGTextField(placeholder: "••••••••", text: $confirmPassword, isSecure: true)
+                        }
                     }
-                }) {
-                    if authStore.isLoading {
-                        ProgressView().tint(.agWhite).agPrimaryButton()
-                    } else {
-                        Text("CREATE ACCOUNT").agPrimaryButton()
-                    }
-                }
-                .padding(.horizontal, AGSpacing.lg)
 
-                HStack {
-                    Text("Already have an account?")
-                        .font(.agMenuItemDescription)
-                        .foregroundColor(.agDarkGrey)
-                    Button(action: onSignIn) {
-                        Text("Sign In")
+                    fieldLabel("FULL NAME *")
+                    AGTextField(placeholder: "Your Full Name", text: $fullName)
+
+                    fieldLabel("COMPANY NAME")
+                    AGTextField(placeholder: "Your Company", text: $companyName)
+
+                    fieldLabel("EMAIL *")
+                    AGTextField(placeholder: "your@email.com", text: $email)
+
+                    fieldLabel("PHONE (OPTIONAL)")
+                    AGTextField(placeholder: "your Phone Number", text: $phone)
+
+                    if let error = authStore.errorMessage {
+                        Text(error)
                             .font(.agMenuItemDescription)
-                            .foregroundColor(.agCoral)
-                            .underline()
+                            .foregroundColor(.red)
                     }
+
+                    Button(action: {
+                        Task {
+                            let request = RegisterRequest(
+                                username: username,
+                                password: password,
+                                fullName: fullName,
+                                email: email,
+                                phoneNumber: phone.isEmpty ? nil : phone,
+                                companyName: companyName.isEmpty ? nil : companyName
+                            )
+                            await authStore.register(request: request)
+                            if authStore.isLoggedIn { onSuccess() }
+                        }
+                    }) {
+                        Group {
+                            if authStore.isLoading {
+                                ProgressView().tint(.agWhite)
+                            } else {
+                                Text("CREATE ACCOUNT")
+                            }
+                        }
+                        .font(.outfitLight(14))
+                        .foregroundColor(.agWhite)
+                        .kerning(1)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color.agCoral)
+                        .cornerRadius(8)
+                    }
+                    .padding(.top, AGSpacing.md)
+                    .padding(.bottom, AGSpacing.xxxl)
                 }
-                .padding(.bottom, AGSpacing.xxxl)
+                .padding(.horizontal, AGSpacing.lg)
+            }
+        }
+    }
+
+    private func fieldLabel(_ text: String) -> some View {
+        HStack(spacing: 2) {
+            let parts = text.components(separatedBy: " *")
+            Text(parts[0])
+                .font(.outfitLight(12))
+                .foregroundColor(.agDarkGrey)
+                .kerning(1)
+            if parts.count > 1 {
+                Text("*")
+                    .font(.outfitLight(12))
+                    .foregroundColor(.red)
             }
         }
     }
@@ -195,13 +339,14 @@ struct ForgotPasswordView: View {
     var onBack: () -> Void
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: AGSpacing.xl) {
+                AuthHeader()
+
                 Text("FORGOT PASSWORD")
                     .font(.agSectionTitle)
                     .foregroundColor(.agBlack)
                     .kerning(1.5)
-                    .padding(.top, AGSpacing.xl)
 
                 if submitted {
                     Text("If an account exists for \(email), you'll receive a password reset email shortly.")
@@ -210,11 +355,24 @@ struct ForgotPasswordView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, AGSpacing.lg)
                 } else {
-                    AGTextField(placeholder: "Email Address", text: $email)
-                        .padding(.horizontal, AGSpacing.lg)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("EMAIL")
+                            .font(.outfitLight(12))
+                            .foregroundColor(.agDarkGrey)
+                            .kerning(1)
+                        AGTextField(placeholder: "your@email.com", text: $email)
+                    }
+                    .padding(.horizontal, AGSpacing.lg)
 
                     Button(action: { submitted = true }) {
-                        Text("SEND RESET LINK").agPrimaryButton()
+                        Text("SEND RESET LINK")
+                            .font(.outfitLight(14))
+                            .foregroundColor(.agWhite)
+                            .kerning(1)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(Color.agCoral)
+                            .cornerRadius(8)
                     }
                     .padding(.horizontal, AGSpacing.lg)
                 }
@@ -250,7 +408,24 @@ struct AGTextField: View {
         .padding(AGSpacing.md)
         .frame(height: 50)
         .background(Color.agWhite)
-        .cornerRadius(AGRadius.input)
-        .overlay(RoundedRectangle(cornerRadius: AGRadius.input).stroke(Color.agLightGrey, lineWidth: 1))
+        .cornerRadius(8)
+        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.agLightGrey, lineWidth: 1))
+    }
+}
+
+// MARK: - Corner Radius Helper
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
     }
 }
