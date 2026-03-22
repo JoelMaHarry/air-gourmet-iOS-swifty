@@ -4,7 +4,6 @@ struct HomeView: View {
     @EnvironmentObject var cartStore: CartStore
     @EnvironmentObject var menuStore: MenuStore
     @State private var isSideNavOpen = false
-    @State private var isCartOpen = false
     @State private var selectedCategory: MenuCategory?
     @State private var showCategoryView = false
     @State private var customOrderText = ""
@@ -12,328 +11,367 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             VStack(spacing: 0) {
-                // Header
-                AGNavigationHeader(
-                    title: "",
-                    onMenuTap: { withAnimation { isSideNavOpen = true } },
-                    cartCount: cartStore.itemCount,
-                    onCartTap: { isCartOpen = true }
-                )
-
+                homeHeader
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
-                        heroSection
+                        heroImageSection
+                        introSection
                         customOrderSection
-                        worldIsYourOysterSection
-                        menuSection
+                        divider
+                        oysterSection
+                        jetBannerSection
+                        categoryGridSection
                         conciergeSection
-                        thirtyYearsSection
+                        thirtyYearsBannerSection
                         StandardFooter()
                     }
                 }
             }
-
             SideNavigationView(isOpen: $isSideNavOpen) { destination in
-                if let category = MenuCategory.allCases.first(where: { $0.rawValue == destination }) {
-                    selectedCategory = category
+                if let cat = MenuCategory.allCases.first(where: { $0.rawValue == destination }) {
+                    selectedCategory = cat
                     showCategoryView = true
                 }
             }
-
-            // Hidden navigation link
             NavigationLink(
                 destination: selectedCategory.map { CategoryView(category: $0) },
                 isActive: $showCategoryView,
                 label: { EmptyView() }
             )
         }
-        .sheet(isPresented: $isCartOpen) { CartView() }
         .task { await menuStore.loadMenu() }
     }
 
-    // MARK: - Hero Section
+    // ─────────────────────────────────────────
+    // MARK: 1. HOME HEADER (black)
+    // hamburger left · AG logo center · profile right
+    // ─────────────────────────────────────────
+    private var homeHeader: some View {
+        ZStack {
+            Color.black
 
-    private var heroSection: some View {
-        ZStack(alignment: .top) {
-            // Black background
-            Color.agBlack
-                .frame(height: 240)
-
-            VStack(spacing: 0) {
-                // AG Logo
-                Image("ag-symbol")
+            // Logo + title stacked center
+            VStack(spacing: 6) {
+                Image("ag-symbol-white")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 90, height: 88)
-                    .padding(.top, 28)
-
-                // Featured dishes image
-                Image("featured-dishes")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 319, height: 100)
-                    .clipped()
-                    .padding(.top, 8)
-
-                // Title
+                    .frame(width: 72, height: 72)
                 Text("AIR GOURMET INFLIGHT CATERING")
-                    .font(.outfitLight(18))
-                    .foregroundColor(.agWhite)
+                    .font(.outfitLight(14))
+                    .foregroundColor(.white)
                     .kerning(0.9)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 8)
-                    .padding(.bottom, 16)
+            }
+
+            // Hamburger left
+            HStack {
+                Button(action: { withAnimation { isSideNavOpen = true } }) {
+                    Image(systemName: "line.horizontal.3")
+                        .font(.system(size: 18))
+                        .foregroundColor(Color(hex: "#FF6348"))
+                        .frame(width: 44, height: 44)
+                }
+                .padding(.leading, 8)
+                Spacer()
+                // Profile icon right
+                Button(action: {}) {
+                    Image(systemName: "person")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color(hex: "#FF6348"))
+                        .frame(width: 44, height: 44)
+                }
+                .padding(.trailing, 8)
             }
         }
-        .frame(height: 240)
-        .clipped()
+        .frame(height: 130)
     }
 
-    // MARK: - Custom Order Section
+    // ─────────────────────────────────────────
+    // MARK: 2. HERO IMAGE (white bg, fruit dish)
+    // ─────────────────────────────────────────
+    private var heroImageSection: some View {
+        Image("featured-dishes")
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 40)
+            .padding(.top, 20)
+            .padding(.bottom, 8)
+            .background(Color.white)
+    }
 
-    private var customOrderSection: some View {
-        VStack(alignment: .leading, spacing: AGSpacing.lg) {
-            // Coral headline
+    // ─────────────────────────────────────────
+    // MARK: 3. INTRO TEXT BLOCK
+    // coral headline + body copy
+    // ─────────────────────────────────────────
+    private var introSection: some View {
+        VStack(spacing: 10) {
             Text("OUR MENU IS YOUR IMAGINATION")
-                .font(.outfitLight(18))
-                .foregroundColor(.agCoral)
-                .kerning(0.9)
+                .font(.outfitLight(16))
+                .foregroundColor(Color(hex: "#FF6348"))
+                .kerning(0.8)
                 .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
-                .padding(.top, AGSpacing.xl)
-                .padding(.horizontal, AGSpacing.lg)
+                .padding(.top, 12)
 
-            // Body copy
             Text("Use our app to meet any taste, diet, whim or wish. Choose from our menu, or place custom orders by using the form below. In our decades in the air we've met every kind of request you can think of. Air Gourmet. The finest dining in the air.")
-                .font(.hanumanMedium(16))
-                .foregroundColor(Color(red: 0.42, green: 0.42, blue: 0.42))
+                .font(Font.custom("Hanuman-Medium", size: 15))
+                .foregroundColor(Color(hex: "#6B6B6B"))
                 .multilineTextAlignment(.center)
-                .lineSpacing(9)
-                .padding(.horizontal, AGSpacing.lg)
+                .lineSpacing(5)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 16)
+        }
+        .background(Color.white)
+    }
 
-            // Custom order box - coral border
-            VStack(alignment: .leading, spacing: AGSpacing.xs) {
+    // ─────────────────────────────────────────
+    // MARK: 4. CUSTOM ORDER MODULE
+    // coral-bordered box + button
+    // ─────────────────────────────────────────
+    private var customOrderSection: some View {
+        VStack(spacing: 8) {
+            // Text area with coral border
+            VStack(spacing: 0) {
                 Text("TAP TO WRITE YOUR CUSTOM ORDER")
-                    .font(.outfitLight(14))
-                    .foregroundColor(.agDarkGrey)
-                    .kerning(0.7)
+                    .font(.outfitLight(11))
+                    .foregroundColor(Color(hex: "#6B6B6B"))
+                    .kerning(0.8)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
+                    .padding(.top, 10)
+                    .padding(.horizontal, 12)
 
-                TextEditor(text: $customOrderText)
-                    .font(.hanumanMedium(16))
-                    .foregroundColor(.agMediumGrey)
-                    .frame(height: 60)
-                    .background(Color.clear)
+                ZStack(alignment: .topLeading) {
+                    if customOrderText.isEmpty {
+                        Text("Type here to create your custom order")
+                            .font(Font.custom("Hanuman-Medium", size: 14))
+                            .foregroundColor(Color(hex: "#AAAAAA"))
+                            .padding(.horizontal, 14)
+                            .padding(.top, 8)
+                    }
+                    TextEditor(text: $customOrderText)
+                        .font(Font.custom("Hanuman-Medium", size: 14))
+                        .foregroundColor(Color(hex: "#6B6B6B"))
+                        .frame(height: 80)
+                        .padding(.horizontal, 8)
+                        .scrollContentBackground(.hidden)
+                        .background(Color.clear)
+                }
+                .padding(.bottom, 8)
             }
-            .padding(AGSpacing.lg)
-            .background(Color(red: 1.0, green: 0.388, blue: 0.282).opacity(0.05))
-            .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.agCoral, lineWidth: 1)
-            )
-            .cornerRadius(6)
-            .padding(.horizontal, AGSpacing.lg)
+            .background(Color(hex: "#FF6348").opacity(0.04))
+            .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color(hex: "#FF6348"), lineWidth: 1))
+            .padding(.horizontal, 24)
 
             // Place My Order button
             Button(action: {}) {
                 Text("PLACE MY ORDER")
-                    .font(.outfitLight(14))
-                    .foregroundColor(.agWhite)
+                    .font(.outfitLight(13))
+                    .foregroundColor(.white)
                     .kerning(0.7)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color.agCoral)
-                    .cornerRadius(AGRadius.button)
+                    .frame(height: 38)
+                    .background(Color(hex: "#FF6348"))
+                    .cornerRadius(6)
             }
-            .padding(.horizontal, AGSpacing.lg)
-            .padding(.bottom, AGSpacing.xl)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 20)
         }
+        .background(Color.white)
     }
 
-    // MARK: - World Is Your Oyster Section
+    // ─────────────────────────────────────────
+    // MARK: 5. DIVIDER
+    // ─────────────────────────────────────────
+    private var divider: some View {
+        Rectangle()
+            .fill(Color(hex: "#EBEBEB"))
+            .frame(height: 1)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 8)
+    }
 
-    private var worldIsYourOysterSection: some View {
-        VStack(spacing: 0) {
-            // Divider
-            Rectangle()
-                .fill(Color.agLightGrey)
-                .frame(height: 1)
-                .padding(.horizontal, AGSpacing.lg)
-
-            // THE WORLD IS YOUR OYSTER
+    // ─────────────────────────────────────────
+    // MARK: 6. OYSTER SECTION
+    // title + image + AG Global copy
+    // ─────────────────────────────────────────
+    private var oysterSection: some View {
+        VStack(spacing: 10) {
             Text("THE WORLD IS YOUR OYSTER")
-                .font(.outfitLight(20))
-                .foregroundColor(.agBlack)
-                .kerning(1.6)
+                .font(.outfitLight(18))
+                .foregroundColor(.black)
+                .kerning(1.2)
                 .multilineTextAlignment(.center)
-                .padding(.top, AGSpacing.xl)
-                .padding(.horizontal, AGSpacing.lg)
+                .padding(.top, 20)
 
-            // Oyster/Globe image
             Image("oyster-world")
                 .resizable()
+                .scaledToFit()
+                .frame(width: 260)
+                .padding(.vertical, 8)
+
+            Text("INTRODUCING AIR GOURMET GLOBAL")
+                .font(.outfitLight(13))
+                .foregroundColor(Color(hex: "#FF6348"))
+                .kerning(0.7)
+                .multilineTextAlignment(.center)
+
+            Text("We're the one-stop shop that makes it easy to enjoy fresh, fabulous catering on every leg of your flight. To connect with our global network of fine caterers, just hit the \"Custom Order\" form above. Or call us anytime, 24/7.")
+                .font(Font.custom("Hanuman-Medium", size: 15))
+                .foregroundColor(Color(hex: "#6B6B6B"))
+                .multilineTextAlignment(.center)
+                .lineSpacing(5)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 20)
+        }
+        .background(Color.white)
+    }
+
+    // ─────────────────────────────────────────
+    // MARK: 7. JET BANNER (OUR INFLIGHT MENU)
+    // full-width image with text overlay
+    // ─────────────────────────────────────────
+    private var jetBannerSection: some View {
+        ZStack {
+            Image("menu-banner")
+                .resizable()
                 .scaledToFill()
-                .frame(width: 300, height: 211)
+                .frame(maxWidth: .infinity)
+                .frame(height: 160)
                 .clipped()
-                .cornerRadius(6)
-                .padding(.top, AGSpacing.lg)
 
-            // AG Global section
-            VStack(spacing: AGSpacing.md) {
-                Text("INTRODUCING AIR GOURMET GLOBAL")
-                    .font(.outfitLight(14))
-                    .foregroundColor(.agCoral)
-                    .kerning(0.7)
-                    .multilineTextAlignment(.center)
+            Color.black.opacity(0.35)
+                .frame(height: 160)
 
-                Text("We're the one-stop shop that makes it easy to enjoy fresh, delicious catering on every leg of your flight. To connect with our global network of fine caterers, just fill out the \"Custom Order\" form above. Or call us anytime, 24/7.")
-                    .font(.hanumanMedium(16))
-                    .foregroundColor(Color(red: 0.42, green: 0.42, blue: 0.42))
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(9)
-            }
-            .padding(.horizontal, AGSpacing.lg)
-            .padding(.vertical, AGSpacing.xl)
+            Text("OUR INFLIGHT MENU")
+                .font(.outfitLight(18))
+                .foregroundColor(.white)
+                .kerning(0.9)
         }
+        .frame(height: 160)
     }
 
-    // MARK: - Menu Section
+    // ─────────────────────────────────────────
+    // MARK: 8. CATEGORY GRID
+    // 2-column, food photos + labels below
+    // ─────────────────────────────────────────
+    private var categoryGridSection: some View {
+        LazyVGrid(
+            columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)],
+            spacing: 12
+        ) {
+            ForEach(MenuCategory.allCases) { category in
+                Button(action: {
+                    selectedCategory = category
+                    showCategoryView = true
+                }) {
+                    VStack(spacing: 0) {
+                        Image(category.imageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 110)
+                            .clipped()
+                            .cornerRadius(6)
 
-    private var menuSection: some View {
-        VStack(spacing: 0) {
-            // Menu banner with background image
-            ZStack {
-                Image("menu-banner")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 175)
-                    .clipped()
-
-                Color.agBlack.opacity(0.4)
-                    .frame(height: 175)
-
-                Text("OUR INFLIGHT MENU")
-                    .font(.outfitLight(18))
-                    .foregroundColor(.agWhite)
-                    .kerning(0.9)
-            }
-            .frame(height: 175)
-
-            // Category grid
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                ForEach(MenuCategory.allCases) { category in
-                    MenuCategoryCard(category: category) {
-                        selectedCategory = category
-                        showCategoryView = true
+                        Text(category.rawValue.uppercased())
+                            .font(.outfitLight(11))
+                            .foregroundColor(Color(hex: "#6B6B6B"))
+                            .kerning(0.6)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 6)
+                            .padding(.bottom, 10)
                     }
+                    .background(Color.white)
+                    .cornerRadius(6)
+                    .shadow(color: Color.black.opacity(0.1), radius: 3, x: 2, y: 2)
                 }
+                .buttonStyle(ScaleButtonStyle())
             }
-            .padding(.horizontal, AGSpacing.md)
-            .padding(.vertical, AGSpacing.lg)
         }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 16)
+        .background(Color.white)
     }
 
-    // MARK: - Concierge Section
-
+    // ─────────────────────────────────────────
+    // MARK: 9. CONCIERGE SECTION
+    // flowers image + title + body copy
+    // ─────────────────────────────────────────
     private var conciergeSection: some View {
         VStack(spacing: 0) {
-            Rectangle()
-                .fill(Color.agLightGrey)
-                .frame(height: 1)
-                .padding(.horizontal, AGSpacing.lg)
-                .padding(.vertical, AGSpacing.xl)
-
-            Text("CONCIERGE SERVICES")
-                .font(.outfitLight(18))
-                .foregroundColor(.agBlack)
-                .kerning(0.9)
-                .padding(.bottom, AGSpacing.lg)
-
-            // Concierge image
             Image("concierge-image")
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: .infinity)
-                .frame(height: 233)
+                .frame(height: 200)
                 .clipped()
-                .cornerRadius(6)
-                .padding(.horizontal, AGSpacing.lg)
 
-            Text("We provide the accoutrements that soften the rigors of flying — simple things, like suggesting the flowers for the decoration of your aircraft. We can provide you with everything from cigars, videos, linen service, cabin supplies, gifts, personal shopping, newspapers, transportation services — whatever your special needs might be.")
-                .font(.hanumanMedium(16))
-                .foregroundColor(Color(red: 0.42, green: 0.42, blue: 0.42))
+            Text("CONCIERGE SERVICES")
+                .font(.outfitLight(16))
+                .foregroundColor(.black)
+                .kerning(0.9)
+                .padding(.top, 16)
+                .padding(.bottom, 8)
+
+            Text("We provide the accoutrements that soften the rigors of flying – simple things, like suggesting the flowers for the decoration of your aircraft. We can provide you with everything from cigars, videos, linen service, cabin supplies, gifts, personal shopping, newspapers, transportation services – whatever your special needs might be.")
+                .font(Font.custom("Hanuman-Medium", size: 15))
+                .foregroundColor(Color(hex: "#6B6B6B"))
                 .multilineTextAlignment(.center)
-                .lineSpacing(9)
-                .padding(.horizontal, AGSpacing.lg)
-                .padding(.top, AGSpacing.lg)
-                .padding(.bottom, AGSpacing.xl)
+                .lineSpacing(5)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 20)
         }
+        .background(Color.white)
     }
 
-    // MARK: - 30 Years Section
-
-    private var thirtyYearsSection: some View {
+    // ─────────────────────────────────────────
+    // MARK: 10. 30 YEARS BANNER
+    // sunset sky image + text overlay
+    // ─────────────────────────────────────────
+    private var thirtyYearsBannerSection: some View {
         ZStack {
             Image("thirty-years-bg")
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: .infinity)
-                .frame(height: 242)
+                .frame(height: 220)
                 .clipped()
 
-            Color.agBlack.opacity(0.5)
+            Color.black.opacity(0.35)
+                .frame(height: 220)
 
-            VStack(spacing: AGSpacing.md) {
+            VStack(spacing: 10) {
                 Text("30 YEARS OF TAKING CATERING HIGHER")
                     .font(.outfitLight(14))
-                    .foregroundColor(.agWhite)
+                    .foregroundColor(.white)
                     .kerning(0.7)
                     .multilineTextAlignment(.center)
 
                 Text("We've been dedicated to helping aviation pros like you for 30 years. Our team is standing by, so please reach out to us. We love to talk catering and supporting our clients in the air.")
-                    .font(.hanumanMedium(16))
-                    .foregroundColor(.agWhite)
+                    .font(Font.custom("Hanuman-Medium", size: 15))
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(9)
+                    .lineSpacing(5)
+                    .padding(.horizontal, 32)
             }
-            .padding(.horizontal, AGSpacing.lg)
         }
-        .frame(height: 242)
+        .frame(height: 220)
     }
 }
 
-// MARK: - Menu Category Card
-
-struct MenuCategoryCard: View {
-    let category: MenuCategory
-    var onTap: (() -> Void)?
-
-    var body: some View {
-        Button(action: { onTap?() }) {
-            VStack(alignment: .center, spacing: 0) {
-                // Category image
-                Image(category.imageName)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 100)
-                    .clipped()
-                    .cornerRadius(6)
-
-                // Category name
-                Text(category.rawValue.uppercased())
-                    .font(.outfitLight(12))
-                    .foregroundColor(Color(red: 0.42, green: 0.42, blue: 0.42))
-                    .kerning(0.6)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical, AGSpacing.xs)
-            }
-            .background(Color.agWhite)
-            .cornerRadius(6)
-            .shadow(color: Color.black.opacity(0.1), radius: 3, x: 2, y: 2)
+// MARK: - Color hex helper (shared)
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3:  (a,r,g,b) = (255,(int>>8)*17,(int>>4 & 0xF)*17,(int & 0xF)*17)
+        case 6:  (a,r,g,b) = (255,int>>16,int>>8 & 0xFF,int & 0xFF)
+        case 8:  (a,r,g,b) = (int>>24,int>>16 & 0xFF,int>>8 & 0xFF,int & 0xFF)
+        default: (a,r,g,b) = (255,0,0,0)
         }
-        .buttonStyle(ScaleButtonStyle())
+        self.init(.sRGB, red: Double(r)/255, green: Double(g)/255, blue: Double(b)/255, opacity: Double(a)/255)
     }
 }

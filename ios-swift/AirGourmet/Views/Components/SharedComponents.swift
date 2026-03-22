@@ -39,23 +39,12 @@ struct AGNavigationHeader: View {
 
             Spacer()
 
-            // Right - cart
-            if cartCount > 0 {
-                Button(action: { onCartTap?() }) {
-                    HStack(spacing: 4) {
-                        Text("CART")
-                            .font(.agButton)
-                            .foregroundColor(.agCoral)
-                        Text("\(cartCount)")
-                            .font(.agButton)
-                            .foregroundColor(.agCoral)
-                    }
-                    .padding(.horizontal, 12)
-                    .frame(height: 44)
-                    .overlay(RoundedRectangle(cornerRadius: AGRadius.button).stroke(Color.agCoral, lineWidth: 1))
-                }
-            } else {
-                Color.clear.frame(width: 44, height: 44)
+            // Right - profile icon (coral) matching Figma/TestFlight design
+            Button(action: { onCartTap?() }) {
+                Image(systemName: "person")
+                    .foregroundColor(.agCoral)
+                    .font(.system(size: 22))
+                    .frame(width: 44, height: 44)
             }
         }
         .padding(.horizontal, AGSpacing.md)
@@ -98,21 +87,28 @@ struct AGTabBar: View {
         HStack(spacing: 0) {
             ForEach(AGTab.allCases, id: \.self) { tab in
                 Button(action: { selectedTab = tab }) {
-                    VStack(spacing: 4) {
+                    VStack(spacing: 3) {
                         Image(systemName: tab.icon)
                             .font(.system(size: 20))
-                        Text(tab.label)
-                            .font(.system(size: 10))
-                            .kerning(0.5)
+                        Text(tab.label.capitalized)
+                            .font(.outfitLight(11))
+                            .kerning(0.3)
                     }
-                    .foregroundColor(selectedTab == tab ? .agCoral : .agMediumGrey)
+                    .foregroundColor(selectedTab == tab ? .agCoral : Color(hex: "#AAAAAA"))
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
+                    .background(
+                        selectedTab == tab ?
+                            Color(red: 0.93, green: 0.93, blue: 0.93).cornerRadius(12) :
+                            Color.clear.cornerRadius(12)
+                    )
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 4)
                 }
             }
         }
-        .background(Color.agWhite.opacity(0.95))
-        .overlay(Rectangle().frame(height: 1).foregroundColor(Color.agLightGrey), alignment: .top)
+        .background(Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.95))
+        .overlay(Rectangle().frame(height: 0.5).foregroundColor(Color.agLightGrey), alignment: .top)
     }
 }
 
