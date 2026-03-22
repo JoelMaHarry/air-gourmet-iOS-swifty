@@ -35,14 +35,14 @@ enum MenuCategory: String, CaseIterable, Identifiable {
 
     var imageName: String {
         switch self {
-        case .breakfast: return "category_breakfast"
-        case .displayTrays: return "category_display_trays"
-        case .appetizers: return "category_appetizers"
-        case .soups: return "category_soups"
-        case .salads: return "category_salads"
-        case .sandwiches: return "category_sandwiches"
-        case .entrees: return "category_entrees"
-        case .desserts: return "category_desserts"
+        case .breakfast: return "menu-breakfast"
+        case .displayTrays: return "menu-display-trays"
+        case .appetizers: return "menu-appetizers"
+        case .soups: return "menu-soups"
+        case .salads: return "menu-salads"
+        case .sandwiches: return "menu-sandwiches"
+        case .entrees: return "menu-entrees"
+        case .desserts: return "menu-desserts"
         }
     }
 }
